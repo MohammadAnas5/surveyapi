@@ -67,8 +67,8 @@
 <body>
     <div class="container">
         <h1>ChatGPT in Academia: A Study on Student Acceptance and Impact</h1>
-        <form id="dataForm">
-            <!-- Gender -->
+        <form id="dataForm" action="/submit">
+
             <div class="form-group">
                 <label for="gender">1. Gender:</label>
                 <input type="radio" name="gender" value="Male" id="gender-male"> Male
@@ -237,7 +237,9 @@
                     ChatGPT for your university studies? (Open-ended question)</label>
                 <textarea id="q17" name="q17" placeholder="Your response here"></textarea>
             </div>
-            <!-- <button type="button" onclick="addData()">Add Data</button> -->
+
+
+            <!-- Submit Button -->
             <div class="form-group">
                 <input type="submit" value="Submit" class="submit-button" onclick="addData()">
             </div>
@@ -245,53 +247,52 @@
 
         <script>
             function addData() {
-            var gender = document.querySelector('input[name="gender"]:checked').value;
-            var course = document.getElementById("course").value;
-            var q3 = document.querySelector('input[name="q3"]:checked').value;
-            var q4 = document.querySelector('input[name="q4"]:checked').value;
-            var q5 = document.getElementById("q5").value;
-            var q6 = document.querySelector('input[name="q6"]:checked').value;
-            var q7 = document.querySelector('input[name="q7"]:checked').value;
-            var q8 = document.querySelector('input[name="q8"]:checked').value;
-            var q9 = document.getElementById("q9").value;
-            var q10 = document.querySelector('input[name="q10"]:checked').value;
-            var q11 = document.getElementById("q11").value;
-            var q12 = document.querySelector('input[name="q12"]:checked').value;
-            var q13 = document.querySelector('input[name="q13"]:checked').value;
-            var q14 = document.getElementById("q14").value;
-            var q15 = document.querySelector('input[name="q15"]:checked').value;
-            var q16 = document.querySelector('input[name="q16"]:checked').value;
-            var q17 = document.getElementById("q17").value;
-
-
+                var gender = getRadioValue("gender", "None");
+                var course = document.getElementById("course").value;
+                var q3 = getRadioValue("q3", "None");
+                var q4 = getRadioValue("q4", "None");
+                var q5 = document.getElementById("q5").value;
+                var q6 = getRadioValue("q6", "None");
+                var q7 = getRadioValue("q7", "None");
+                var q8 = getRadioValue("q8", "None");
+                var q9 = document.getElementById("q9").value;
+                var q10 = getRadioValue("q10", "None");
+                var q11 = document.getElementById("q11").value;
+                var q12 = getRadioValue("q12", "None");
+                var q13 = getRadioValue("q13", "None");
+                var q14 = document.getElementById("q14").value;
+                var q15 = getRadioValue("q15", "None");
+                var q16 = getRadioValue("q16", "None");
+                var q17 = document.getElementById("q17").value;
+        
                 // Assuming you have a simple JSON structure
                 var data = {
-                "gender": gender,
-                "course": course,
-                "q3": q3,
-                "q4": q4,
-                "q5": q5,
-                "q6": q6,
-                "q7": q7,
-                "q8": q8,
-                "q9": q9,
-                "q10": q10,
-                "q11": q11,
-                "q12": q12,
-                "q13": q13,
-                "q14": q14,
-                "q15": q15,
-                "q16": q16,
-                "q17": q17
+                    "gender": gender,
+                    "course": course,
+                    "q3": q3,
+                    "q4": q4,
+                    "q5": q5,
+                    "q6": q6,
+                    "q7": q7,
+                    "q8": q8,
+                    "q9": q9,
+                    "q10": q10,
+                    "q11": q11,
+                    "q12": q12,
+                    "q13": q13,
+                    "q14": q14,
+                    "q15": q15,
+                    "q16": q16,
+                    "q17": q17
                 };
-
+        
                 fetch('/add_data', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
                     .then(response => response.json())
                     .then(result => {
                         alert(result.msg);
@@ -300,6 +301,17 @@
                     .catch(error => {
                         console.error('Error:', error);
                     });
+            }
+        
+            // Helper function to get the value of a selected radio button or default value if none selected
+            function getRadioValue(name, defaultValue) {
+                var radioButtons = document.querySelectorAll('input[name="' + name + '"]');
+                for (var i = 0; i < radioButtons.length; i++) {
+                    if (radioButtons[i].checked) {
+                        return radioButtons[i].value;
+                    }
+                }
+                return defaultValue;
             }
         </script>
 </body>
