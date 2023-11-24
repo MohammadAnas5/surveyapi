@@ -11,6 +11,8 @@
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            align-items: center;
+            justify-content: center;
         }
 
         .container {
@@ -61,12 +63,50 @@
         .submit-button:hover {
             background-color: #0056b3;
         }
+
+        .subheading-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+
+        .profile-photo img {
+            width: 70px; /* Adjust the width of the profile photo */
+            height: auto;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .subheading {
+            font-size: 16px; /* Decreased font size */
+            text-decoration: none;
+            color: #007BFF;
+            transition: color 0.3s;
+        }
+
+        .subheading:hover {
+            color: #0056b3; /* Change the color on hover */
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>ChatGPT in Academia: A Study on Student Acceptance and Impact</h1>
+        <h1>ChatGPT in Academia: Survey</h1>
+    <div class="subheading-container">
+        <div class="profile-photo">
+            <img src="/static/images/myphoto.png" alt="Profile Photo">
+        </div>
+
+        <a href="https://scholar.google.com/citations?user=Fzut9DEAAAAJ&hl=en" class="subheading" onclick="handleClick()">Under Supervision Dr Parul Aggrawal</a>
+
+    </div>
+    <div centre>
+        <p>Explore the influence of ChatGPT in academia! Share your thoughts on how this language model impacts your learning and decision-making in a quick survey. Your insights shape the conversation around AI tools in education.</p>
+    </div>
         <form id="dataForm" action="/submit">
 
             <div class="form-group">
@@ -82,10 +122,10 @@
                     <option value="">Select a course</option>
                     <option value="Computer Science">Computer Science</option>
                     <option value="Biology">Biology</option>
-                    <option value="Arts">Arts</option> 
-                    <option value="Engineering">Engineering</option> 
-                    <option value="Commerce">Commerce</option> 
-                    
+                    <option value="Arts">Arts</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Commerce">Commerce</option>
+
                 </select>
             </div>
 
@@ -96,16 +136,16 @@
                     <option value="">Select a degree</option>
                     <option value="Bachelor's degree">Bachelor's degree</option>
                     <option value="Master's degree">Master's degree</option>
-                    <option value="Doctoral degree (Ph.D.)">Doctoral degree (Ph.D.)</option> 
-                    <option value="Associate degree">Associate degree</option> 
-                    <option value="School">School</option> 
-                    
+                    <option value="Doctoral degree (Ph.D.)">Doctoral degree (Ph.D.)</option>
+                    <option value="Associate degree">Associate degree</option>
+                    <option value="School">School</option>
+
                 </select>
             </div>
-            
+
             <!-- 1. To what extent do you believe that using ChatGPT will help you achieve higher grades and academic success? -->
             <div class="form-group">
-                <label for="q3">3. To what extent do you believe that using ChatGPT will help you achieve higher grades
+                <label for="q3">1. To what extent do you believe that using ChatGPT will help you achieve higher grades
                     and academic success?</label>
                 <input type="radio" name="q3" value="NotAtAll" id="q3-notatall"> Not at all
                 <input type="radio" name="q3" value="SmallExtent" id="q3-smallextent"> To a small extent
@@ -116,7 +156,7 @@
 
             <!-- 2. How confident are you in your ability to use ChatGPT effectively for your university studies? -->
             <div class="form-group">
-                <label for="q4">4. How confident are you in your ability to use ChatGPT effectively for your university
+                <label for="q4">2. How confident are you in your ability to use ChatGPT effectively for your university
                     studies?</label>
                 <input type="radio" name="q4" value="NotAtAllConfident" id="q4-notatallconfident"> Not at all confident
                 <input type="radio" name="q4" value="SlightlyConfident" id="q4-slightlyconfident"> Slightly confident
@@ -128,14 +168,14 @@
 
             <!-- 3. In what ways do you think using ChatGPT could positively impact your learning experience and academic performance? -->
             <div class="form-group">
-                <label for="q5">5. In what ways do you think using ChatGPT could positively impact your learning
+                <label for="q5">3. In what ways do you think using ChatGPT could positively impact your learning
                     experience and academic performance?</label>
                 <textarea id="q5" name="q5" placeholder="Your response here"></textarea>
             </div>
 
             <!-- 4. How often do your professors or academic advisors mention or recommend the use of ChatGPT as a study aid? -->
             <div class="form-group">
-                <label for="q6">6. How often do your professors or academic advisors mention or recommend the use of
+                <label for="q6">4. How often do your professors or academic advisors mention or recommend the use of
                     ChatGPT as a study aid?</label>
                 <input type="radio" name="q6" value="Never" id="q6-never"> Never
                 <input type="radio" name="q6" value="Rarely" id="q6-rarely"> Rarely
@@ -146,7 +186,7 @@
 
             <!-- 5. To what extent do your friends or classmates use ChatGPT for their university studies? -->
             <div class="form-group">
-                <label for="q7">7. To what extent do your friends or classmates use ChatGPT for their university
+                <label for="q7">5. To what extent do your friends or classmates use ChatGPT for their university
                     studies?</label>
                 <input type="radio" name="q7" value="NoneOfThem" id="q7-noneofthem"> None of them use it
                 <input type="radio" name="q7" value="AFewOfThem" id="q7-afewofthem"> A few of them use it
@@ -157,7 +197,7 @@
 
             <!-- 6. In your opinion, how influential are the opinions and recommendations of your peers and instructors in shaping your decision to use ChatGPT for academic purposes? -->
             <div class="form-group">
-                <label for="q8">8. In your opinion, how influential are the opinions and recommendations of your peers
+                <label for="q8">6. In your opinion, how influential are the opinions and recommendations of your peers
                     and instructors in shaping your decision to use ChatGPT for academic purposes?</label>
                 <input type="radio" name="q8" value="NotInfluential" id="q8-notinfluential"> Not influential
                 <input type="radio" name="q8" value="SlightlyInfluential" id="q8-slightlyinfluential"> Slightly
@@ -171,14 +211,14 @@
 
             <!-- 7. Describe your emotional state when you successfully complete a challenging academic task with the help of ChatGPT. -->
             <div class="form-group">
-                <label for="q9">9. Describe your emotional state when you successfully complete a challenging academic
+                <label for="q9">7. Describe your emotional state when you successfully complete a challenging academic
                     task with the help of ChatGPT.</label>
                 <textarea id="q9" name="q9" placeholder="Your response here"></textarea>
             </div>
 
             <!-- 8. How often do you feel a sense of accomplishment and satisfaction when ChatGPT assists you in your studies? -->
             <div class="form-group">
-                <label for="q10">10. How often do you feel a sense of accomplishment and satisfaction when ChatGPT
+                <label for="q10">8. How often do you feel a sense of accomplishment and satisfaction when ChatGPT
                     assists you in your studies?</label>
                 <input type="radio" name="q10" value="RarelyOrNever" id="q10-rarelyornever"> Rarely or never
                 <input type="radio" name="q10" value="Occasionally" id="q10-occasionally"> Occasionally
@@ -189,14 +229,14 @@
 
             <!-- 9. How do you manage feelings of frustration or disappointment when ChatGPT doesn't provide the expected assistance for your academic needs? -->
             <div class="form-group">
-                <label for="q11">11. How do you manage feelings of frustration or disappointment when ChatGPT doesn't
+                <label for="q11">9. How do you manage feelings of frustration or disappointment when ChatGPT doesn't
                     provide the expected assistance for your academic needs?</label>
                 <textarea id="q11" name="q11" placeholder="Your response here"></textarea>
             </div>
 
             <!-- 10. Have you developed a routine where you use ChatGPT as your first resource when you encounter academic questions or challenges? -->
             <div class="form-group">
-                <label for="q12">12. Have you developed a routine where you use ChatGPT as your first resource when you
+                <label for="q12">10. Have you developed a routine where you use ChatGPT as your first resource when you
                     encounter academic questions or challenges?</label>
                 <input type="radio" name="q12" value="NotAtAll" id="q12-notatall"> Not at all
                 <input type="radio" name="q12" value="Occasionally" id="q12-occasionally"> Occasionally
@@ -207,7 +247,7 @@
 
             <!-- 11. How often do you find yourself automatically turning to ChatGPT without consciously thinking about it when you need assistance with your studies? -->
             <div class="form-group">
-                <label for="q13">13. How often do you find yourself automatically turning to ChatGPT without consciously
+                <label for="q13">11. How often do you find yourself automatically turning to ChatGPT without consciously
                     thinking about it when you need assistance with your studies?</label>
                 <input type="radio" name="q13" value="RarelyOrNever" id="q13-rarelyornever"> Rarely or never
                 <input type="radio" name="q13" value="Occasionally" id="q13-occasionally"> Occasionally
@@ -218,14 +258,14 @@
 
             <!-- 12. Can you describe a specific academic task or scenario where using ChatGPT has become a habitual part of your study routine? -->
             <div class="form-group">
-                <label for="q14">14. Can you describe a specific academic task or scenario where using ChatGPT has
+                <label for="q14">12. Can you describe a specific academic task or scenario where using ChatGPT has
                     become a habitual part of your study routine?</label>
                 <textarea id="q14" name="q14" placeholder="Your response here"></textarea>
             </div>
 
             <!-- 13. How accessible do you find ChatGPT in terms of being able to use it on the devices and platforms you prefer for your university studies? -->
             <div class="form-group">
-                <label for="q15">15. How accessible do you find ChatGPT in terms of being able to use it on the devices
+                <label for="q15">13. How accessible do you find ChatGPT in terms of being able to use it on the devices
                     and platforms you prefer for your university studies?</label>
                 <input type="radio" name="q15" value="VeryDifficult" id="q15-verydifficult"> Very difficult
                 <input type="radio" name="q15" value="Difficult" id="q15-difficult"> Difficult
@@ -236,7 +276,7 @@
 
             <!-- 14. Do you feel that your university provides adequate technical support and guidance for students using ChatGPT in an academic context? -->
             <div class="form-group">
-                <label for="q16">16. Do you feel that your university provides adequate technical support and guidance
+                <label for="q16">14. Do you feel that your university provides adequate technical support and guidance
                     for students using ChatGPT in an academic context?</label>
                 <input type="radio" name="q16" value="StronglyDisagree" id="q16-stronglydisagree"> Strongly disagree
                 <input type="radio" name="q16" value="Disagree" id="q16-disagree"> Disagree
@@ -247,7 +287,7 @@
 
             <!-- 15. What are the key technical or logistical challenges you encounter when using ChatGPT for your university studies? -->
             <div class="form-group">
-                <label for="q17">17. What are the key technical or logistical challenges you encounter when using
+                <label for="q17">15. What are the key technical or logistical challenges you encounter when using
                     ChatGPT for your university studies? (Open-ended question)</label>
                 <textarea id="q17" name="q17" placeholder="Your response here"></textarea>
             </div>
@@ -263,7 +303,6 @@
             function addData() {
                 var gender = getRadioValue("gender", "None");
                 var course = document.getElementById("course").value;
-                var level = document.getElementById("level").value;
                 var q3 = getRadioValue("q3", "None");
                 var q4 = getRadioValue("q4", "None");
                 var q5 = document.getElementById("q5").value;
@@ -279,12 +318,11 @@
                 var q15 = getRadioValue("q15", "None");
                 var q16 = getRadioValue("q16", "None");
                 var q17 = document.getElementById("q17").value;
-        
+
                 // Assuming you have a simple JSON structure
                 var data = {
                     "gender": gender,
                     "course": course,
-                    "level": level,
                     "q3": q3,
                     "q4": q4,
                     "q5": q5,
@@ -301,14 +339,14 @@
                     "q16": q16,
                     "q17": q17
                 };
-        
+
                 fetch('/add_data', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    })
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
                     .then(response => response.json())
                     .then(result => {
                         alert(result.msg);
@@ -318,7 +356,7 @@
                         console.error('Error:', error);
                     });
             }
-        
+
             // Helper function to get the value of a selected radio button or default value if none selected
             function getRadioValue(name, defaultValue) {
                 var radioButtons = document.querySelectorAll('input[name="' + name + '"]');
@@ -328,6 +366,11 @@
                     }
                 }
                 return defaultValue;
+            }
+
+            function handleClick() {
+                // Add your click handling logic here
+                alert("Subheading Clicked!");
             }
         </script>
 </body>
