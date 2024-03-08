@@ -40,4 +40,4 @@ def thanks():
     return render_template('thanks.html')
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",port=5044) 
+    app.run(debug=True) 
